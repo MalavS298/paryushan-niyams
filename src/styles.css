@@ -144,5 +144,14 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  .font-serif,
+  h1,
+  h2 {
+    font-family: var(--font-serif);
+    font-optical-sizing: auto;
   }
 }
+
