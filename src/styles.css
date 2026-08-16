@@ -85,8 +85,14 @@
   --border: oklch(0.9 0.016 80);
   --input: oklch(0.9 0.016 80);
   --ring: oklch(0.42 0.078 165);
+  --chart-1: oklch(0.42 0.078 165);
+  --chart-2: oklch(0.6 0.09 80);
+  --chart-3: oklch(0.55 0.06 40);
+  --chart-4: oklch(0.7 0.08 120);
+  --chart-5: oklch(0.5 0.05 200);
+  --sidebar: oklch(0.96 0.012 85);
+  --sidebar-foreground: oklch(0.24 0.024 55);
 
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
   --sidebar-primary: oklch(0.208 0.042 265.755);
   --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
   --sidebar-accent: oklch(0.968 0.007 247.896);
