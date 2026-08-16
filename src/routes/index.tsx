@@ -66,8 +66,7 @@ function SignInPage() {
           },
         });
         if (error) throw error;
-        setSentTo(email);
-        toast.success("Check your email to confirm your account");
+        toast.success("Account created");
       } else {
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
           redirectTo: `${window.location.origin}/reset-password`,
