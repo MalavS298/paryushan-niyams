@@ -14,6 +14,108 @@ export type Database = {
   }
   public: {
     Tables: {
+      activities: {
+        Row: {
+          alt_points: number | null
+          key: string
+          kind: string
+          label: string
+          note: string | null
+          points: number
+          sort_order: number
+        }
+        Insert: {
+          alt_points?: number | null
+          key: string
+          kind: string
+          label: string
+          note?: string | null
+          points: number
+          sort_order: number
+        }
+        Update: {
+          alt_points?: number | null
+          key?: string
+          kind?: string
+          label?: string
+          note?: string | null
+          points?: number
+          sort_order?: number
+        }
+        Relationships: []
+      }
+      kid_entries: {
+        Row: {
+          activity_key: string
+          created_at: string
+          day_index: number
+          id: string
+          kid_id: string
+          variant: string | null
+        }
+        Insert: {
+          activity_key: string
+          created_at?: string
+          day_index: number
+          id?: string
+          kid_id: string
+          variant?: string | null
+        }
+        Update: {
+          activity_key?: string
+          created_at?: string
+          day_index?: number
+          id?: string
+          kid_id?: string
+          variant?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "kid_entries_activity_key_fkey"
+            columns: ["activity_key"]
+            isOneToOne: false
+            referencedRelation: "activities"
+            referencedColumns: ["key"]
+          },
+          {
+            foreignKeyName: "kid_entries_kid_id_fkey"
+            columns: ["kid_id"]
+            isOneToOne: false
+            referencedRelation: "kids"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      kids: {
+        Row: {
+          age_category: Database["public"]["Enums"]["age_category"]
+          created_at: string
+          id: string
+          name: string
+          program: Database["public"]["Enums"]["program_type"]
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          age_category: Database["public"]["Enums"]["age_category"]
+          created_at?: string
+          id?: string
+          name: string
+          program: Database["public"]["Enums"]["program_type"]
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          age_category?: Database["public"]["Enums"]["age_category"]
+          created_at?: string
+          id?: string
+          name?: string
+          program?: Database["public"]["Enums"]["program_type"]
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
@@ -38,15 +140,66 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      admin_kids_overview: {
+        Args: never
+        Returns: {
+          age_category: Database["public"]["Enums"]["age_category"]
+          kid_id: string
+          name: string
+          parent_email: string
+          parent_name: string
+          points: number
+          program: Database["public"]["Enums"]["program_type"]
+        }[]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      kid_points: { Args: { _kid: string }; Returns: number }
+      leaderboard: {
+        Args: { _age: Database["public"]["Enums"]["age_category"] }
+        Returns: {
+          kid_id: string
+          name: string
+          points: number
+          program: Database["public"]["Enums"]["program_type"]
+        }[]
+      }
     }
     Enums: {
-      [_ in never]: never
+      age_category: "0-5" | "6-8" | "9-11" | "12+"
+      app_role: "admin" | "user"
+      program_type: "paryushan" | "das_lakshan"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -173,6 +326,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      age_category: ["0-5", "6-8", "9-11", "12+"],
+      app_role: ["admin", "user"],
+      program_type: ["paryushan", "das_lakshan"],
+    },
   },
 } as const
