@@ -41,7 +41,12 @@ function AdminPage() {
               Admin — Paryushan / Das Lakshan Niyam Sheet
             </h1>
           </div>
-          <Button asChild variant="outline" size="sm">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="border-gold/60 bg-transparent text-gold hover:bg-gold/10 hover:text-gold-bright"
+          >
             <Link to="/dashboard">
               <ArrowLeft className="size-4" /> Tracker
             </Link>

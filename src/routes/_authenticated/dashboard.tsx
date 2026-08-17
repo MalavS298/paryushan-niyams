@@ -297,13 +297,23 @@ function DashboardPage() {
           </div>
           <div className="flex items-center gap-2">
             {isAdmin && (
-              <Button asChild variant="outline" size="sm">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="border-gold/60 bg-transparent text-gold hover:bg-gold/10 hover:text-gold-bright"
+              >
                 <Link to="/admin">
                   <Shield className="size-4" /> Admin
                 </Link>
               </Button>
             )}
-            <Button variant="outline" size="sm" onClick={handleSignOut}>
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-gold/60 bg-transparent text-gold hover:bg-gold/10 hover:text-gold-bright"
+              onClick={handleSignOut}
+            >
               <LogOut className="size-4" /> Log out
             </Button>
           </div>
