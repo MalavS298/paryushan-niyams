@@ -9,7 +9,7 @@ export const Route = createFileRoute("/_authenticated")({
       data: { session },
     } = await supabase.auth.getSession();
     if (!session) {
-      throw redirect({ to: "/" });
+      throw redirect({ to: "/login" });
     }
   },
   component: () => <Outlet />,

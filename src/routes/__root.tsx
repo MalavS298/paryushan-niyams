@@ -78,10 +78,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Harbor" },
-      { name: "description", content: "A calm place for your work." },
-      { property: "og:title", content: "Harbor" },
-      { property: "og:description", content: "A calm place for your work." },
+      { title: "JSGA Niyam Tracker" },
+      { name: "description", content: "Digital Paryushan / Das Lakshan Niyam Sheet for JSGA." },
+      { property: "og:title", content: "JSGA Niyam Tracker" },
+      {
+        property: "og:description",
+        content: "Digital Paryushan / Das Lakshan Niyam Sheet for JSGA.",
+      },
+
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
